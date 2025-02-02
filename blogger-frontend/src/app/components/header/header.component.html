@@ -1,0 +1,10 @@
+<div class="bg-blue-400 px-20 h-20 flex justify-between items-center">
+  <span class="text-3xl font-bold">
+    <a routerLink="/" class="title text-white">Cathode Blogs</a>
+  </span>
+  <ul class="flex gap-5 text-xl">
+    <li><a class="text-white" routerLink="/blogs">Blogs</a></li>
+    <li><a class="text-white" routerLink="/about">About Us</a></li>
+    <li><a class="text-white" routerLink="/admin/manage-blogs" *ngIf="authService.isLoggedIn">Manage Blogs</a></li>
+  </ul>
+</div>

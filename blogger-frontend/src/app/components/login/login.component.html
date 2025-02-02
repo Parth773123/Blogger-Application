@@ -1,0 +1,25 @@
+<div
+  class="container flex flex-col justify-center items-center w-full h-full m-10"
+>
+  <mat-card appearance="outlined" class="w-6/12">
+    <form class="flex flex-col gap-5 p-20">
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput name="email" [(ngModel)]="email" required />
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          name="password"
+          [(ngModel)]="password"
+          required
+        />
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="w-full" (click)="login()">
+        Login
+      </button>
+    </form>
+  </mat-card>
+</div>

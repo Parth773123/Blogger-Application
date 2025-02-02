@@ -1,0 +1,67 @@
+<div class="mt-10 px-20">
+  <div class="flex justify-between p-5">
+    <h1 class="text-2xl font-bold">Manage Blogs</h1>
+    <button mat-raised-button color="primary" routerLink="/admin/blog-form">Create Blogs</button>
+  </div>
+  <mat-form-field class="w-full">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="search for any blogs..."
+      #input
+    />
+  </mat-form-field>
+
+  <div class="flex justify-center m-5">
+    <div class="mat-elevation-z8 w-full">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+          <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="categoryId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+          <td mat-cell *matCellDef="let row" class="text-center">
+            {{ getCategoryName(row.categoryId) }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let row" class="text-center">
+            <button mat-raised-button class="mr-5 edit" [routerLink]="'/admin/blog-form/update/'+ row.id">Edit</button>
+            <button mat-raised-button class="delete" (click)="deleteBlog(row.id)">Delete</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            No data matching the filter "{{ input.value }}"
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+        #paginator
+      ></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="flex flex-col items-center px-20">
+    <h1 class="text-5xl font-bold m-10">All Blogs</h1>
+    <div class="flex flex-wrap justify-center gap-5">
+        <div *ngFor="let blog of blogList">
+            <app-blog-card [blog]="blog"></app-blog-card>
+        </div>
+      </div>
+</div>

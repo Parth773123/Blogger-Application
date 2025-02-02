@@ -1,0 +1,76 @@
+<div class="flex justify-center w-full px-20 my-5">
+  <form [formGroup]="blogForm" class="w-6/12">
+    <div class="w-full flex justify-center">
+      <h1
+        class="text-2xl font-bold my-5"
+        *ngIf="isEdit; else createBlogTemplate"
+      >
+        Update Blog
+      </h1>
+      <ng-template #createBlogTemplate>
+        <h1 class="text-2xl font-bold my-5">Create New Blog</h1>
+      </ng-template>
+    </div>
+    <div class="flex flex-col items-center w-full">
+      <div class="w-full">
+        <mat-form-field class="w-full">
+          <mat-label>Choose Category</mat-label>
+          <mat-select formControlName="categoryId">
+            <mat-option *ngFor="let item of categoryList" [value]="item.id">{{
+              item.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="w-full">
+        <mat-form-field class="w-full">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </div>
+      <div class="w-full">
+        <mat-form-field class="w-full">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" />
+        </mat-form-field>
+      </div>
+      <div class="w-full">
+        <mat-form-field class="w-full">
+          <mat-label>Content</mat-label>
+          <textarea matInput formControlName="content" rows="10"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="w-full">
+        <mat-form-field class="w-full">
+          <mat-label>Image</mat-label>
+          <input matInput formControlName="image" />
+        </mat-form-field>
+      </div>
+      <div class="w-full flex">
+        <mat-checkbox formControlName="isFeatured">Featured Post</mat-checkbox>
+      </div>
+      <div class="w-full flex justify-center my-5">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="updateBlog()"
+          [disabled]="blogForm.invalid"
+          *ngIf="isEdit; else createBlogButtonTem"
+        >
+          Update
+        </button>
+        <ng-template #createBlogButtonTem>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="createBlog()"
+            [disabled]="blogForm.invalid"
+          >
+            Create
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="flex flex-col justify-center items-center px-20 h-80">
+  <h1 class="text-5xl font-bold mb-10">Welcome to Cathode Blogs</h1>
+  <p class="w-6/12">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta beatae veniam
+    eius maiores! Assumenda dignissimos, veritatis quasi doloremque incidunt
+    ducimus distinctio necessitatibus! Corporis recusandae blanditiis non
+    accusantium quaerat quisquam pariatur saepe vel error perspiciatis nihil
+    nulla, nam ullam ad nostrum?
+  </p>
+</div>
+<div class="flex flex-col px-20 items-center">
+  <div class="text-xl font-bold mb-5">Featured Blogs</div>
+  <div class="flex flex-wrap justify-center gap-5">
+    <div *ngFor="let blog of blogList">
+        <app-blog-card [blog]="blog"></app-blog-card>
+    </div>
+  </div>
+</div>
